@@ -1,0 +1,266 @@
+[
+  {
+    "type": 1,
+    "title": "Sonarr",
+    "description": "Smart PVR for newsgroup and BitTorrent users.",
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-icon.png",
+    "image": "lscr.io/linuxserver/sonarr:latest",
+    "ports": [
+      {
+        "container": 8989,
+        "host": 8989
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "/path/to/sonarr/config"
+      },
+      {
+        "container": "/tv",
+        "bind": "/path/to/tv"
+      },
+      {
+        "container": "/downloads",
+        "bind": "/path/to/downloads"
+      }
+    ],
+    "env": [
+      {
+        "name": "PUID",
+        "label": "PUID",
+        "default": "1000"
+      },
+      {
+        "name": "PGID",
+        "label": "PGID",
+        "default": "1000"
+      },
+      {
+        "name": "TZ",
+        "label": "TimeZone",
+        "default": "Asia/Riyadh"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "Radarr",
+    "description": "Movie collection manager for Usenet and BitTorrent users.",
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr-icon.png",
+    "image": "lscr.io/linuxserver/radarr:latest",
+    "ports": [
+      {
+        "container": 7878,
+        "host": 7878
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "/path/to/radarr/config"
+      },
+      {
+        "container": "/movies",
+        "bind": "/path/to/movies"
+      },
+      {
+        "container": "/downloads",
+        "bind": "/path/to/downloads"
+      }
+    ],
+    "env": [
+      {
+        "name": "PUID",
+        "label": "PUID",
+        "default": "1000"
+      },
+      {
+        "name": "PGID",
+        "label": "PGID",
+        "default": "1000"
+      },
+      {
+        "name": "TZ",
+        "label": "TimeZone",
+        "default": "Asia/Riyadh"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "qBittorrent",
+    "description": "qBittorrent client with web UI",
+    "platform": "linux",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/6/66/New_qBittorrent_Logo.svg",
+    "image": "lscr.io/linuxserver/qbittorrent:latest",
+    "ports": [
+      {
+        "container": 8080,
+        "host": 8080
+      },
+      {
+        "container": 6881,
+        "host": 6881
+      },
+      {
+        "container": 6881,
+        "host": 6881,
+        "protocol": "udp"
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "/path/to/qbittorrent/config"
+      },
+      {
+        "container": "/downloads",
+        "bind": "/path/to/downloads"
+      }
+    ],
+    "env": [
+      {
+        "name": "PUID",
+        "label": "PUID",
+        "default": "1000"
+      },
+      {
+        "name": "PGID",
+        "label": "PGID",
+        "default": "1000"
+      },
+      {
+        "name": "TZ",
+        "label": "TimeZone",
+        "default": "Asia/Riyadh"
+      },
+      {
+        "name": "WEBUI_PORT",
+        "label": "Web UI Port",
+        "default": "8080"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "Prowlarr",
+    "description": "Indexer manager/proxy for Sonarr, Radarr, etc.",
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-icon.png",
+    "image": "lscr.io/linuxserver/prowlarr:latest",
+    "ports": [
+      {
+        "container": 9696,
+        "host": 9696
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "/path/to/prowlarr/config"
+      }
+    ],
+    "env": [
+      {
+        "name": "PUID",
+        "label": "PUID",
+        "default": "1000"
+      },
+      {
+        "name": "PGID",
+        "label": "PGID",
+        "default": "1000"
+      },
+      {
+        "name": "TZ",
+        "label": "TimeZone",
+        "default": "Asia/Riyadh"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "Bazarr",
+    "description": "Subtitle manager for Sonarr and Radarr.",
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr-icon.png",
+    "image": "lscr.io/linuxserver/bazarr:latest",
+    "ports": [
+      {
+        "container": 6767,
+        "host": 6767
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "/path/to/bazarr/config"
+      },
+      {
+        "container": "/tv",
+        "bind": "/path/to/tv"
+      },
+      {
+        "container": "/movies",
+        "bind": "/path/to/movies"
+      }
+    ],
+    "env": [
+      {
+        "name": "PUID",
+        "label": "PUID",
+        "default": "1000"
+      },
+      {
+        "name": "PGID",
+        "label": "PGID",
+        "default": "1000"
+      },
+      {
+        "name": "TZ",
+        "label": "TimeZone",
+        "default": "Asia/Riyadh"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "title": "Overseerr",
+    "description": "Request management and media discovery tool for Plex.",
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/overseerr-icon.png",
+    "image": "lscr.io/linuxserver/overseerr:latest",
+    "ports": [
+      {
+        "container": 5055,
+        "host": 5055
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "bind": "/path/to/overseerr/config"
+      }
+    ],
+    "env": [
+      {
+        "name": "PUID",
+        "label": "PUID",
+        "default": "1000"
+      },
+      {
+        "name": "PGID",
+        "label": "PGID",
+        "default": "1000"
+      },
+      {
+        "name": "TZ",
+        "label": "TimeZone",
+        "default": "Asia/Riyadh"
+      }
+    ]
+  }
+]
